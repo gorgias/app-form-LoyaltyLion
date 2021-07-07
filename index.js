@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded",function(){
 //             }
 //         }              
   
-        fetch(url, options2)
+        fetch(url, options)
         .then(res => res.json())
         .then(json => {console.log('integration: ', json); return json;})
         .catch(err => {console.error('error:' + err); return err;});
@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded",function(){
         const url = `https://${domain}.gorgias.com/api/widgets`;
         const options = {
           method: 'POST',
+          mode: no-cors,
           headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
           body: JSON.stringify({context: 'ticket', order: 0})
         };
