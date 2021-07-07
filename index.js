@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded",function(){
       const url = `https://${domain}.gorgias.com/api/integrations`; // form - gorgiasDomain
       const options = {
           method: 'POST',
+          mode: no-cors,
           headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
           body: JSON.stringify({
             http: {
@@ -26,7 +27,6 @@ document.addEventListener("DOMContentLoaded",function(){
 //             description: "Uros test",
 //             http: {
 //                 headers: {
-//                 Authorization: "Basic NzUxODViZWQwMDc5N2E3NjgzMTExMDcxM2Q5YWU1OWU6ZTc5ODJiNjRmODE2OWU5NGI1YTU1ZDg2NzNhOWMxODM="
 //                 },
 //                 url: "https://api.loyaltylion.com/v2/customers?email={{ticket.requester.email}}",
 //                 method: "GET",
