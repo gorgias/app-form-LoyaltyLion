@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded",function(){
           const options = {
           method: 'POST',
           mode: no-cors,
-        headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
+          headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
           body: JSON.stringify({
             http: {
               method: 'GET',
