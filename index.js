@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded",function(){
       const url = `https://${domain}.gorgias.com/api/integrations`; // form - gorgiasDomain
           const options = {
           method: 'POST',
-          mode: no-cors,
+          mode: "no-cors",
           headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
           body: JSON.stringify({
             http: {
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded",function(){
         const url = `https://${domain}.gorgias.com/api/widgets`;
         const options = {
           method: 'POST',
-          mode: no-cors,
+          mode: "no-cors",
           headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
           body: JSON.stringify({context: 'ticket', order: 0})
         };
