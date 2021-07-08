@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded",function(){
         let options2 = {
             type: "http",
             name: "LoyaltyLion",
+            mode: "no-cors",
             description: "Uros test",
             http: {
                 headers: {
