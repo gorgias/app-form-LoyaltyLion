@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded",function(){
       let raw = JSON.stringify({
         "name": "My HTTP integration",
         "type": "http",
+        "mode": "no-cors", 
         "deactivated_datetime": "1981-08-29T23:05:17.350Z",
         "description": "sed eu officia magna",
         "http": {
