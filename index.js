@@ -1,68 +1,83 @@
 document.addEventListener("DOMContentLoaded",function(){
-  let submitButton = document.querySelector('#connectButton');
-
-  const integrationMethod = async(domain, email, apiKey) => {
-    const url = `https://${domain}.gorgias.com/api/integrations`; // form - gorgiasDomain
-      let options = {
-          type: "http",
-          name: "LoyaltyLion",
-          mode: "no-cors",
-          description: "Uros test",
-          http: {
-               headers: {
-                  Authorization: 'Basic ' + btoa(email + ":" + apiKey)
-                },
-              url: "https://api.loyaltylion.com/v2/customers?email={{ticket.requester.email}}",
-              method: "GET",
-              request_content_type: "application/json",
-              response_content_type: "application/json",
-              triggers: {
-              'ticket-created': true,
-              'ticket-updated': false,
-              'ticket-message-created': true
-              },
-              "form": ""
-          }
-      }              
-      
-      
-      fetch(url, options)
-      .then(res => res.json())
-      .then(json => {console.log('integration: ', json); return json;})
-      .catch(err => {console.error('error:' + err); return err;});
-  }; // End of integrationMethod
+    let submitButton = document.querySelector('#connectButton');
   
-  const widgetMethod = (domain) => {
-      
-      const url = `https://${domain}.gorgias.com/api/widgets`;
-      const options = {
+    // Authorization: 'Basic ' + btoa(email + ":" + apiKey)
+    const integrationMethod = async(domain, email, apiKey) => {
+      const url = `https://${domain}.gorgias.com/api/integrations?&`; // form - gorgiasDomain
+
+      let myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Authorization", btoa(email + ":" + apiKey));
+
+      let raw = JSON.stringify({
+        "name": "My HTTP integration",
+        "type": "http",
+        "deactivated_datetime": "1981-08-29T23:05:17.350Z",
+        "description": "sed eu officia magna",
+        "http": {
+          "id": 987,
+          "url": "https://company.com/api/customers?email={{ticket.customer.email}}",
+          "method": "GET",
+          "headers": {
+            "x-api-key": "abcdef12345"
+          },
+          "form": {
+            "hello": "world",
+            "ticket_id": "{{ticket.id}}"
+          },
+          "request_content_type": "application/json",
+          "response_content_type": "application/json",
+          "triggers": {
+            "ticket_created": true,
+            "ticket_updated": true,
+            "ticket_message_created": true
+          }
+        }
+      });
+
+      let requestOptions = {
         method: 'POST',
-        mode: "no-cors",
-        headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
-        body: JSON.stringify({context: 'ticket', order: 0})
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
       };
-      
-      fetch(url, options)
-        .then(res => res.json())
-        .then(json => console.log(json))
-        .catch(err => console.error('error:' + err));
-  };
 
-  // Click/submit event
-  submitButton.addEventListener('click', () => {
+      fetch(url, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    }; // End of integrationMethog
+    
+    const widgetMethod = (domain) => {
+        
+        const url = `https://${domain}.gorgias.com/api/widgets`;
+        const options = {
+          method: 'POST',
+          headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
+          body: JSON.stringify({context: 'ticket', order: 0})
+        };
+        
+        fetch(url, options)
+          .then(res => res.json())
+          .then(json => console.log(json))
+          .catch(err => console.error('error:' + err));
+    };
 
-    // Collect form data
-    let dataObject = {
-      gorgiasEmail: document.querySelector('#gorgiasEmail').value,
-      gorgiasDomain: document.querySelector('#gorgiasDomain').value,
-      gorgiasAPI: document.querySelector('#gorgiasAPI').value,
-      loyaltylionEmail: document.querySelector('#loyaltylionEmail').value,
-      loyaltylionAPI:  document.querySelector('#loyaltylionAPI').value,
-    }
+    // Click/submit event
+    submitButton.addEventListener('click', () => {
 
-    console.log('', dataObject.gorgiasDomain);
+      // Collect form data
+      let dataObject = {
+        gorgiasEmail: document.querySelector('#gorgiasEmail').value,
+        gorgiasDomain: document.querySelector('#gorgiasDomain').value,
+        gorgiasAPI: document.querySelector('#gorgiasAPI').value,
+        loyaltylionEmail: document.querySelector('#loyaltylionEmail').value,
+        loyaltylionAPI:  document.querySelector('#loyaltylionAPI').value,
+      }
 
-    integrationMethod(dataObject.gorgiasDomain, dataObject.gorgiasEmail, dataObject.gorgiasAPI); // Call integration method with form data
-    widgetMethod(dataObject.gorgiasDomain); // Call widget method with form data
+      console.log('', dataObject.gorgiasDomain);
+
+      integrationMethod(dataObject.gorgiasDomain); // Call integration method with form data
+      widgetMethod(dataObject.gorgiasDomain); // Call widget method with form data
+    });
   });
-});
