@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded",function(){
           mode: "no-cors",
           description: "Uros test",
           http: {
+               headers: {
+                  Authorization: 'Basic ' + btoa(email + ":" + apiKey)
+                },
               url: "https://api.loyaltylion.com/v2/customers?email={{ticket.requester.email}}",
               method: "GET",
               request_content_type: "application/json",
@@ -22,7 +25,7 @@ document.addEventListener("DOMContentLoaded",function(){
           }
       }              
       
-      options.http.headers.set('Authorization', 'Basic ' + btoa(email + ":" + apiKey));
+      
       fetch(url, options)
       .then(res => res.json())
       .then(json => {console.log('integration: ', json); return json;})
