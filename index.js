@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
   const integrationMethod = async(domain, email, apiKey) => {
     const url = `https://${domain}.gorgias.com/api/integrations`; // form - gorgiasDomain
-      let options2 = {
+      let options = {
           type: "http",
           name: "LoyaltyLion",
           mode: "no-cors",
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded",function(){
       }              
       
       options.http.headers.set('Authorization', 'Basic ' + btoa(email + ":" + apiKey));
-      fetch(url, options2)
+      fetch(url, options)
       .then(res => res.json())
       .then(json => {console.log('integration: ', json); return json;})
       .catch(err => {console.error('error:' + err); return err;});
