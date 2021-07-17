@@ -1,31 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Loyalty Lion</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-	</head>
-	<body>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Loyalty Lion</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<section>
 		<div class="header"><img src="logo-1x.png" alt=""></div>
-		<section>
 		<div class="flex-container">
-			<h2>Connect with LoyaltyLion</h2>
+			<h2>Connect with <b> LoyaltyLion</b></h2>
 			<form>
 				<div class="form-group">
 					<label for="gorgiasEmail">Gorgias Username (Your email address)</label>
-					<input type="email" id="gorgiasEmail" name="gorgiasEmail">
+					<input type="email" id="gorgiasEmail" name="gorgiasEmail" placeholder="your@email.com">
 				</div>
 				<div class="form-domain">
 					<label for="gorgiasDomain">Gorgias Account Domain</label>
-					<input type="text" id="gorgiasDomain" name="gorgiasDomain">
+					<div class="domain-extension">
+						<input type="text" id="gorgiasDomain" name="gorgiasDomain" placeholder="mystore">
+						<span class="domain-extension-box">.gorgias.com</span>
+					</div>
 				</div>
 				<div class="form-group">
-					<label for="gorgiasAPI">Gorgias API Key</label>
+					<label for="gorgiasAPI">
+						Gorgias API Key
+						<span class="info-btn">
+							<p>To find your Gorgias API key, visit<strong> Settings -> REST API</strong> and copy the text below the <strong>Password (API Key)</strong> field.
+							</p>
+						</span>
+					</label>
 					<input type="text" id="gorgiasAPI" name="gorgiasAPI">
 				</div>
 				<div class="form-group">
@@ -33,19 +43,21 @@
 					<input type="email" id="loyaltylionEmail" name="loyaltylionEmail">
 				</div>
 				<div class="form-group">
-					<label for="loyaltylionAPI">LoyaltyLion API Key</label>
+					<label for="loyaltylionAPI">
+						LoyaltyLion API Key
+						<span class="info-btn">
+							<p>You can find your <strong>API key</strong> in your <a href="https://google.com" target="_blank">Loyaltylion settings.</a></p>
+						</span>
+					</label>
 					<input type="text" id="loyaltylionAPI" name="loyaltylionAPI">
 				</div>
-				<button id="connectButton" name="connectButton"><label for="connectButton">Connect with LoyaltyLion</label></button>
+				<button id="connectButton" name="connectButton"><label for="connectButton">Connect with
+						LoyaltyLion</label></button>
 			</form>
-		</section>
+	</section>
 
-		</div>
-  <p class="output-0"></p>
-  <p class="output-1"></p>
-  <p class="output-2"></p>
-  <p class="output-3"></p>
-  <p class="output-4"></p>
-	</body>
- <script type="text/javascript"src="./index.js"></script>
+	</div>
+</body>
+<script type="text/javascript" src="./index.js"></script>
+
 </html>
