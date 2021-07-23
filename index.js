@@ -7,13 +7,19 @@ function onSubmit(event) {
 
     let submitButton = document.querySelector('#connectButton')
     submitButton.classList.add('disabled')
+
+    // Fill in data that needs to be changed in HTTP integration payload
+    const loyaltyLionAPIToken = document.querySelector('#loyaltyLionAPIToken').value;
+    const loyaltyLionAPISecret = document.querySelector('#loyaltyLionAPISecret').value;
+    const authHeader = btoa(`${loyaltyLionAPIToken}:${loyaltyLionAPISecret}`)
+
     const httpIntegrationPayload = {
         "type": "http",
         "name": "LoyaltyLion",
         "description": "Fetches data from LoyaltyLion and displays it next to tickets.",
         "http": {
             "headers": {
-                "Authorization": "Basic {loyaltyLionAPIKey}"
+                "Authorization": `Basic ${authHeader}`
             },
             "url": "https://api.loyaltylion.com/v2/customers?email={{ticket.requester.email}}",
             "method": "GET",
@@ -37,18 +43,11 @@ function onSubmit(event) {
         widgetTemplate
     }
 
-    // Fill in data that needs to be changed in HTTP integration payload
-    const loyaltyLionEmail = document.querySelector('#loyaltyLionEmail').value;
-    const loyaltyLionAPIKey = document.querySelector('#loyaltyLionAPIKey').value;
-    payload.httpIntegrationPayload.http.headers.Authorization.replace('{loyaltyLionAPIKey}', loyaltyLionAPIKey)
-
     const url = `https://us-central1-gorgias-apps-cloud-functions.cloudfunctions.net/app-form-redirect`
 
-    let rawPayload = JSON.stringify(payload)
-
-    let requestOptions = {
+    let config = {
         method: 'POST',
-        body: rawPayload,
+        body: JSON.stringify(payload),
         redirect: 'follow',
         headers: {
             'Content-Type': 'application/json',
@@ -63,7 +62,7 @@ function onSubmit(event) {
         submitButton.innerHTML = errorSubmitButtonText;
     }
 
-    fetch(url, requestOptions)
+    fetch(url, config)
         .then((resp) => {
             if (resp.status > 399) {
                 handleError(`status code: ${resp.status}; response: ${resp.body}`)
