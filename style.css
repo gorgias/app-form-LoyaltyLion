@@ -171,7 +171,6 @@ button {
   display: block;
   font-size: 12px;
   background: #161616;
-  opacity: 0.9;
   color: white;
   padding: 8px;
   border-radius: 4px;
@@ -195,22 +194,25 @@ button {
   transform: translate(80px, 4px) rotate(45deg);
 }
 
-label[for="loyaltylionAPI"] .info-btn p {
+label[for="loyaltyLionAPIKey"] .info-btn p {
   transform: translateY(-136%);
 }
 
-label[for="gorgiasAPI"] .info-btn p {
+label[for="gorgiasAPIKey"] .info-btn p {
   transform: translateY(-118%);
 }
 
 .domain-extension {
-  border-radius: 4px;
   display: flex;
   flex-direction: row;
   margin: 8px 0;
 }
 
+.domain-extension input {
+  border-radius: 4px 0 0 4px;
+}
 .domain-extension-box {
+  border-radius: 0 4px 4px 0;
   padding: 16px 14px;
   width: 75px;
   display: flex;
