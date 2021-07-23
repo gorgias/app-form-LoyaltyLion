@@ -1,10 +1,9 @@
 body {
+  font-family: Inter;
   background: #582c83;
   display: flex;
   width: 100%;
   height: 100%;
-  margin: 0;
-  padding: 0;
   min-width: 100vw;
   min-height: 100vh;
   align-items: center;
@@ -33,22 +32,19 @@ section {
 }
 
 h2 {
-  font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
   line-height: 32px;
 
   color: #161616;
-  margin: 0;
-  margin-bottom: 24px;
+  margin: 0 0 24px 0;
 }
 
 form {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px;
 
   flex: none;
   order: 1;
@@ -61,73 +57,35 @@ form {
   width: 100%;
 }
 
-.form-group input {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 16px 14px;
-
-  background: #ffffff;
-
-  border: 1px solid #dddddd;
-  box-sizing: border-box;
-  border-radius: 4px;
-
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 0;
-  margin: 8px 0px;
-  width: 100%;
-  /* transition: all .2 ease-in-out; */
+.form-control:focus {
+  box-shadow: none;
 }
 
 .form-group input:focus {
-  border: 1px solid black;
-  /* transition: all .2 ease-in-out; */
+  border: 2px solid black;
 }
 
-button {
-  height: 44px;
-
-  display: flex;
-  flex-direction: row;
-  flex-basis: 100%;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 16px;
+.btn, .btn:hover, .btn:focus, .btn-info.disabled {
+  min-height: 46px;
+  margin-top: 10px;
   width: 100%;
-
-  background: #40c5dc;
-  border-radius: 4px;
-  border: none;
   color: white;
+  font-size: 14px;
 }
 
-.form-group,
-.form-domain {
+.form-group {
   margin-bottom: 14px;
 }
 
-.form-group label,
-.form-domain label {
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 600;
+.form-group label {
+  font-weight: bold;
   font-size: 14px;
-  line-height: 20px;
+}
 
-  display: flex;
-  align-items: center;
-  letter-spacing: -0.01em;
-  font-feature-settings: "pnum" on, "lnum" on, "kern" off;
-
-  color: #161616;
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  margin: 0;
+.form-control-lg, .input-group-text {
+  margin-top: 8px;
+  font-size: 14px;
+  min-height: 50px;
 }
 
 .header {
@@ -136,23 +94,6 @@ button {
   display: flex;
   max-width: 440px;
   margin: 40px 0;
-}
-
-.form-domain input {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 16px 14px;
-  background: #ffffff;
-  border: 1px solid #dddddd;
-  box-sizing: border-box;
-  align-self: stretch;
-  flex-grow: 1;
-  width: calc(100% - 200px);
-}
-
-.form-domain {
-  width: 100%;
 }
 
 .info-btn {
@@ -165,19 +106,6 @@ button {
 
 .info-btn p {
   display: none;
-}
-
-.info-btn:hover > p {
-  display: block;
-  font-size: 12px;
-  background: #161616;
-  color: white;
-  padding: 8px;
-  border-radius: 4px;
-  width: 180px;
-  font-weight: 400;
-  position: relative;
-  left: -86px;
 }
 
 .info-btn:hover > p a {
@@ -200,28 +128,4 @@ label[for="loyaltyLionAPIKey"] .info-btn p {
 
 label[for="gorgiasAPIKey"] .info-btn p {
   transform: translateY(-118%);
-}
-
-.domain-extension {
-  display: flex;
-  flex-direction: row;
-  margin: 8px 0;
-}
-
-.domain-extension input {
-  border-radius: 4px 0 0 4px;
-}
-.domain-extension-box {
-  border-radius: 0 4px 4px 0;
-  padding: 16px 14px;
-  width: 75px;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  background: #d6d6d6;
-  /* margin: 8px 0px; */
-  font-family: "Inter";
-  font-size: 14px;
-  font-weight: 500;
 }
