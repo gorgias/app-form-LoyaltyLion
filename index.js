@@ -169,10 +169,17 @@ function onSubmit(event) {
 
     function handleError(err) {
         console.error('error:' + err)
-        submitButton.classList.remove('disabled')
         submitButton.classList.remove('btn-info')
         submitButton.classList.add('btn-danger')
         submitButton.innerHTML = errorSubmitButtonText
+
+        setTimeout(() => {
+            submitButton.classList.remove('disabled')
+            submitButton.classList.remove('btn-success')
+            submitButton.classList.remove('btn-danger')
+            submitButton.classList.add('btn-info')
+            submitButton.innerHTML = defaultSubmitButtonText
+        }, 3000)
     }
 
     fetch(url, config)
@@ -180,22 +187,12 @@ function onSubmit(event) {
             if (resp.status > 399) {
                 handleError(`status code: ${resp.status}; response: ${resp.body}`)
             } else {
-                submitButton.classList.remove('disabled')
                 submitButton.classList.remove('btn-info')
                 submitButton.classList.add('btn-success')
                 submitButton.innerHTML = successSubmitButtonText
             }
         })
         .catch(handleError)
-        .then(() => {
-            setTimeout(() => {
-                submitButton.classList.remove('disabled')
-                submitButton.classList.remove('btn-success')
-                submitButton.classList.remove('btn-danger')
-                submitButton.classList.add('btn-info')
-                submitButton.innerHTML = defaultSubmitButtonText
-            }, 3000)
-        })
 
     return false
 }
