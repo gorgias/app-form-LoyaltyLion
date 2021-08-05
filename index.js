@@ -35,6 +35,7 @@ function onSubmit(event) {
 
     const widgetTemplate = {
         context: 'ticket',
+        type: 'http',
         order: 0,
         template: {
             'type': 'wrapper',
