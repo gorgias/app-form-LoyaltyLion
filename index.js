@@ -9,9 +9,7 @@ function onSubmit(event) {
     submitButton.classList.add('disabled')
 
     // Fill in data that needs to be changed in HTTP integration payload
-    const loyaltyLionAPIToken = document.querySelector('#loyaltyLionAPIToken').value
-    const loyaltyLionAPISecret = document.querySelector('#loyaltyLionAPISecret').value
-    const authHeader = btoa(`${loyaltyLionAPIToken}:${loyaltyLionAPISecret}`)
+    const loyaltyLionAPIKey = document.querySelector('#loyaltyLionAPIKey').value
 
     const httpIntegrationPayload = {
         'type': 'http',
@@ -19,7 +17,7 @@ function onSubmit(event) {
         'description': 'Fetches data from LoyaltyLion and displays it next to tickets.',
         'http': {
             'headers': {
-                'Authorization': `Basic ${authHeader}`
+                'Authorization': `Bearer ${loyaltyLionAPIKey}`
             },
             'url': 'https://api.loyaltylion.com/v2/customers?email={{ticket.requester.email}}',
             'method': 'GET',
