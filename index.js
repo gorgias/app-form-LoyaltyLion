@@ -19,7 +19,7 @@ function onSubmit(event) {
             'headers': {
                 'Authorization': `Bearer ${loyaltyLionAPIKey}`
             },
-            'url': 'https://api.loyaltylion.com/v2/customers?email={{ticket.requester.email}}',
+            'url': 'https://api.loyaltylion.com/v2/customers?email={{ticket.customer.email}}',
             'method': 'GET',
             'request_content_type': 'application/json',
             'response_content_type': 'application/json',
