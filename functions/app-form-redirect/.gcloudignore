@@ -1,0 +1,4 @@
+.gcloudignore
+.git
+node_modules/
+test/
