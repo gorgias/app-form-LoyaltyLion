@@ -1,0 +1,17 @@
+{
+  "name": "app-form-loyaltylion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Backend of the LoyaltyLion connection form: creates the LoyaltyLion HTTP integration and widget on a Gorgias account.",
+  "main": "index.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "functions-framework --target=redirect",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.4.0"
+  }
+}
